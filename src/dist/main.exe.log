@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "main.py", line 10, in <module>
+  File "cat.pyc", line 8, in <module>
+  File "cat.pyc", line 9, in Cat
+pygame.error: Couldn't open ../images/catRoaming.png
