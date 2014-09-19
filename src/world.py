@@ -20,25 +20,25 @@ class WorldObserver(object):
                 if isinstance(ent, Cat) and ent.hunger >= Cat.THRESHOLD_HUNGRY:
                     cat_hunger += ent.hunger - Cat.THRESHOLD_HUNGRY                   
         else:
-            surface.blit(self.font.render('Super! Alle Katzen sind jetzt satt!', 
+            surface.blit(self.font.render('Great! All cats are happy!', 
                                             False, 
                                             (0, 0, 0), 
                                             (255, 255, 255)), 
                                           (300,300))
         if self.focussed_entityFailed:
-            surface.blit(self.font.render('Schade! Du kannst diesen Level jetzt nicht mehr schaffen ...', 
+            surface.blit(self.font.render('You do not have enough food left ... you failed this level',
                                             False, 
                                             (0, 0, 0), 
                                             (255, 255, 255)), 
                                           (200,300))    
         
-        surface.blit(self.font.render('Futter %s' % self.world.player.foodAmount, 
+        surface.blit(self.font.render('Food %s' % self.world.player.foodAmount, 
                                         False, 
                                         (0, 0, 0), 
                                         (255, 255, 255)),
                                       (10, 10))
 
-        surface.blit(self.font.render('Katzenhunger %s' % cat_hunger, 
+        surface.blit(self.font.render('Cat hunger %s' % cat_hunger, 
                                         False, 
                                         (0, 0, 0), 
                                         (255, 255, 255)),
