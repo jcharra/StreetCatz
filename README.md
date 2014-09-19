@@ -29,3 +29,8 @@ Keys:
  * SPACE      - Drop food
  
  
+Open issues
+===========
+
+This game has never been finished, unfortunately. You'll probably notice that the level design has not received
+much love and the second level is most probably (feel free to prove me wrong) too hard to finish successfully. The game may, however, serve as a more involved example of a pygame program.
