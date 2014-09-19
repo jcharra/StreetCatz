@@ -20,10 +20,12 @@ Gameplay
 ========
 
 You have a monitor in the lower left corner of your display indicating cat positions and respective hunger intensity
-(red denotes a very hungry specimen). Keys:
+(red denotes a very hungry specimen). 
 
- Arrow Keys - Control car/avatar
- C          - get into/off the car
- SPACE      - Drop food
+Keys:
+
+ * Arrow Keys - Control car/avatar
+ * C          - get into/off the car
+ * SPACE      - Drop food
  
  
