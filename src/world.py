@@ -16,7 +16,7 @@ class WorldObserver(object):
     def writeMessages(self, surface):
         cat_hunger = 0
         if not self.levelFinished:            
-            for ent in self.world.active_entities.itervalues():
+            for ent in iter(self.world.active_entities.values()):
                 if isinstance(ent, Cat) and ent.hunger >= Cat.THRESHOLD_HUNGRY:
                     cat_hunger += ent.hunger - Cat.THRESHOLD_HUNGRY                   
         else:
@@ -48,7 +48,7 @@ class WorldObserver(object):
             self.levelFinished = True
         
         rest_nutrition = self.world.player.foodAmount * Food.NUTRITION_VALUE
-        for ent in self.world.entities.itervalues():
+        for ent in iter(self.world.entities.values()):
             if isinstance(ent, Food):
                 rest_nutrition += ent.nutritionValue 
         if cat_hunger > rest_nutrition:
@@ -82,7 +82,7 @@ class World(object):
         
     def remove_entity(self, entity):
         del self.entities[entity.id]
-        if self.active_entities.has_key(entity.id):
+        if entity.id in self.active_entities:
             del self.active_entities[entity.id]
         
     def get_entity(self, entity_id):
@@ -94,7 +94,7 @@ class World(object):
     def get_closest_entity(self, fromLocation, targetClass, range=1000, validityTest=None):
         closestDist = range
         closestEntity = None
-        for ent in self.entities.itervalues():
+        for ent in iter(self.entities.values()):
             if isinstance(ent, targetClass) and Vector2.get_distance(ent.location, fromLocation) < closestDist:
                 if not validityTest or validityTest(ent):
                     closestDist = Vector2.get_distance(ent.location, fromLocation)
@@ -118,7 +118,7 @@ class World(object):
         display_y = min(self.dimension[1] - self.display_size[1], max(0, self.focussed_entity.location.y - self.display_size[1]/2))
         surface.blit(self.background, (0, 0), (display_x, display_y, self.display_size[0], self.display_size[1]))
         
-        for entity in self.entities.itervalues():
+        for entity in iter(self.entities.values()):
             if Vector2.get_distance(self.focussed_entity.location, entity.location) <= self.maximum_expansion:
                 entity.render(surface, (display_x, display_y))
         
@@ -130,7 +130,7 @@ class World(object):
                              pygame.Rect((minimapOffset[0]-1, minimapOffset[1]-1), (minimapSize[0]+2, minimapSize[1]+2)),
                              1)
             
-            for entity in self.active_entities.itervalues():
+            for entity in iter(self.active_entities.values()):
                 # render entity point on minimap
                 x = minimapOffset[0] + int((minimapSize[0] * entity.location.x) / self.dimension[0])
                 y = minimapOffset[1] + int((minimapSize[1] * entity.location.y) / self.dimension[1])

@@ -34,7 +34,7 @@ class LevelBuilder(object):
         x = y = 0
         for line in lines:
             for char in line:
-                img = self.characterMap.has_key(char) and self.characterMap[char]
+                img = char in self.characterMap and self.characterMap[char]
                 if img:
                     image.blit(img, (x, y))
                 x += self.expected_image_width

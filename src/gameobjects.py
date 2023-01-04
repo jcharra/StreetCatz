@@ -46,7 +46,7 @@ class AnimatedGameEntity(GameEntity):
         self.location.y = max(self.location.y, 10)
     
     def handleAction(self, action):
-        raise NotImplementedError, 'Entity %s cannot handle Action %s' % (self.name, action)
+        raise NotImplementedError('Entity %s cannot handle Action %s' % (self.name, action))
     
     def process(self, time_passed):
         self.frameTime += time_passed
